@@ -17,13 +17,15 @@ def check_signature(data):
     s = ''.join(s)
     if(hashlib.sha1(s).hexdigest() == signature):
         return make_response(echostr)
+    else:
+        return "Access failed!"
 
 @acc.route('/weixin', methods=['GET','POST'])
 def wechat_auth():
     if request.method == 'GET':
         return check_signature(request.args)
     else:
-        return None
+        return "Post!"
 
 if __name__ == '__main__':
     acc.run(host='0.0.0.0', debug=True)
