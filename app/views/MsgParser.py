@@ -19,7 +19,7 @@ def recv_msg(data):
 	xmldict = {'FromUserName': fromusername, 'ToUserName': tousername, 'Content': content}
 	return xmldict
 
-def submit_msg(content_dict={'': '', type='text'}):
+def submit_msg(content_dict={'':''}, type='text'):
 	toname = content_dict['FromUserName']
 	fromname = content_dict['ToUserName']
 	content = content_dict['Content']
@@ -34,5 +34,5 @@ def submit_msg(content_dict={'': '', type='text'}):
         <FuncFlag>0</FuncFlag>
     </xml>
 	"""
-    resp_str = reply % (toname, fromname, int(time.time()), content)
-    return resp_str
+	resp_str = reply % (toname, fromname, int(time.time()), content)
+	return resp_str
