@@ -6,6 +6,16 @@ from flask import request, make_response, Blueprint
 
 acc = Blueprint('acc', __name__)
 
+def log(data):
+    try:
+        fout = open('out.txt')
+        fout.write(data)
+        fout.close()
+    except IOError:
+        pass
+    except Exception:
+        pass
+
 @acc.route('/')
 def index():
     return "Hello World!"
@@ -25,21 +35,9 @@ def wechat_auth():
         s = ''.join(s)
         if (hashlib.sha1(s).hexdigest() == signature):
             return make_response(echostr)
-        return '1000'
-        return make_response(echostr)
-    return '404 Not Found!hahaha'
-# from flask import Flask, request, make_response
-
-# acc = Flask(__name__)
-
-# @acc.route('/', methods=['GET', 'POST'])
-# def index():
-#     print request.method
-#     if request.method == 'GET':
-#         data = request.args
-#         echostr = data.get('echostr', '')
-#         return make_response(echostr)
-#     return 'hahaha'
+        return 'Token validate failed!'
+    log(request.data)
+    return request.data
 
 if __name__ == '__main__':
     acc.run(host='0.0.0.0', debug=True)
