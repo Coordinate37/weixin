@@ -3,6 +3,7 @@
 
 import hashlib
 from flask import request, make_response, Blueprint
+import MsgParser
 
 acc = Blueprint('acc', __name__)
 
@@ -25,7 +26,11 @@ def wechat_auth():
     if request.method == 'GET':
         return check_signature(request.args)
     else:
-        return "Post!"
+        xmldict = MsgParser.recv_msg(request.data)
+        reply = MsgParser.submit_msg(xmldict)
+        response = make_response(reply)
+        response.content_type = 'application/xml'
+        return response
 
 if __name__ == '__main__':
     acc.run(host='0.0.0.0', debug=True)
