@@ -1,8 +1,6 @@
-from flask import Flask
- 
-app = Flask(__name__)
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-@app.route("/")
-@app.route("/weixin")
-def hello():
-    return "Hello World!"
+from flask import Flask
+
+app = Flask(__name__)
