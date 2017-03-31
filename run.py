@@ -3,7 +3,7 @@
 
 from app import app
 from app.views.error import err
-from app.views.access import acc
+from app.views.main import acc
 
 def config_blueprints(app):
 	app.secret_key = 'whb'
@@ -14,4 +14,4 @@ def config_blueprints(app):
 config_blueprints(app)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8001, debug=True)
+    app.run(host='0.0.0.0', debug=True)
