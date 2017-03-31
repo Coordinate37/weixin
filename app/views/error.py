@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint
-
-err = Blueprint('err', __name__)
+from . import err
 
 @err.route('/error')
 def error():
