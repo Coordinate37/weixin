@@ -53,7 +53,8 @@ MENU_REPLY = """
     <EventKey><![CDATA[%s]]></EventKey>
 </xml>
 """
-MENU_SETTING = {
+MENU_SETTING = """
+{
     "button": [
         {
             "type": "click",
@@ -75,6 +76,7 @@ MENU_SETTING = {
                 }]
         }]
 }
+"""
 # [title, description, picurl, url]
 NEWS_CONTENT = [
     ["Bingyan", "Bingyan bbs", r"https://baike.baidu.com/pic/%E5%86%B0%E5%B2%A9%E4%BD%9C%E5%9D%8A/4895228/0/d7c9ca3f43d353e07d1e71cf?fr=lemma&ct=single#aid=0&pic=d7c9ca3f43d353e07d1e71cf", r"newbbs.bingyan.net"],
