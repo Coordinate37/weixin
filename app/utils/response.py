@@ -56,8 +56,6 @@ def voice_resp():
 
 @set_msg_type('event:CLICK')
 def click_resp():
-    content = app.config['WELCOME_TEXT']
-    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
     eventkey = xmldata.find('EventKey').text
     if eventkey == 'Group':
         return news_resp1()
@@ -68,11 +66,11 @@ def news_resp1():
     for article in app.config['NEWS_CONTENT1']:
         item = app.config['NEWS_ITEM'] % article
         itemXml.append(item)
-    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))
+    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT1']), ''.join(itemXml))
 
 def news_resp2():
     itemXml = []
     for article in app.config['NEWS_CONTENT2']:
         item = app.config['NEWS_ITEM'] % article
         itemXml.append(item)
-    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))
+    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT2']), ''.join(itemXml))
