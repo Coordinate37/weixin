@@ -79,7 +79,7 @@ MENU_SETTING = """
 """
 # [title, description, picurl, url]
 NEWS_CONTENT1 = (
-    ("Bingyan", "Bingyan bbs", r"http://www.bingyan.net/static/img/team1_1.png", r"newbbs.bingyan.net")
+    ("Bingyan", "Bingyan bbs", r"http://www.bingyan.net/static/img/team1_1.png", r"newbbs.bingyan.net"),
 )
 NEWS_CONTENT2 = (
     ("Bingyan", "Bingyan bbs", r"http://www.bingyan.net/static/img/team1_1.png", r"newbbs.bingyan.net"),
