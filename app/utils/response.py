@@ -54,7 +54,7 @@ def voice_resp():
     content = xmldata.find('Recognition').text
     return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
 
-@set_msg_type('event:click')
+@set_msg_type('event:CLICK')
 def click_resp():
     eventkey = xmldata.find('EventKey').text
     if eventkey == 'Group':
