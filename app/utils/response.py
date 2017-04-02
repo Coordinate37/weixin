@@ -19,7 +19,7 @@ def wechat_response(data):
     tousername = xmldata.find('ToUserName').text
     msgtype = xmldata.find('MsgType').text
     if msgtype == 'event':
-        msgtype = xmldata.find('Event').text
+        msgtype = 'event:%s' % xmldata.find('Event').text
 
     try:
         get_resp_func = msg_type_resp[msgtype]
@@ -40,20 +40,37 @@ def set_msg_type(msg_type):
 
 @set_msg_type('text')
 def text_resp():
-#    content = xmldata.find('Content').text + app.config['HELLO_TEXT']
-#    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
-    itemXml = []
-    for article in app.config['NEWS_CONTENT']:
-        item = app.config['NEWS_ITEM'] % article
-        itemXml.append(item)
-    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))
+   content = xmldata.find('Content').text + app.config['HELLO_TEXT']
+   return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
+    
 
-@set_msg_type('subscribe')
+@set_msg_type('event:subscribe')
 def subscribe_resp():
     content = app.config['WELCOME_TEXT']
     return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
 
-@set_msg_type('voice')
+@set_msg_type('event:voice')
 def voice_resp():
     content = xmldata.find('Recognition').text
     return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
+
+@set_msg_type('event:click')
+def click_resp():
+    eventkey = xmldata.find('EventKey').text
+    if eventkey == 'Group':
+        return news_resp1
+    return news_resp2
+
+def news_resp1():
+    itemXml = []
+    for article in app.config['NEWS_CONTENT1']:
+        item = app.config['NEWS_ITEM'] % article
+        itemXml.append(item)
+    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))
+
+def news_resp2():
+    itemXml = []
+    for article in app.config['NEWS_CONTENT2']:
+        item = app.config['NEWS_ITEM'] % article
+        itemXml.append(item)
+    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))

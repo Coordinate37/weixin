@@ -58,27 +58,30 @@ MENU_SETTING = """
     "button": [
         {
             "type": "click",
-            "name": "今日歌曲",
+            "name": "Network",
             "key": "V1001_TODAY_MUSIC"
         },
         {
-            "name": "菜单",
+            "name": "Click",
             "sub_button": [
                 {
-                    "type": "view",
-                    "name": "搜索",
-                    "url": "http://www.baidu.com/"
+                    "type": "click",
+                    "name": "Bingyan",
+                    "key": "bingyan"
                 },
                 {
-                    "type": "view",
-                    "name": "视频",
-                    "url": "http://v.qq.com/"
+                    "type": "click",
+                    "name": "Teams",
+                    "key": "Group"
                 }]
         }]
 }
 """
 # [title, description, picurl, url]
-NEWS_CONTENT = (
+NEWS_CONTENT1 = (
+    ("Bingyan", "Bingyan bbs", r"http://www.bingyan.net/static/img/team1_1.png", r"newbbs.bingyan.net")
+)
+NEWS_CONTENT2 = (
     ("Bingyan", "Bingyan bbs", r"http://www.bingyan.net/static/img/team1_1.png", r"newbbs.bingyan.net"),
     ("Dian", "Dian 团队官网", r"http://dian.hust.edu.cn/cn/show/slide/1.jpg", r"http://dian.hust.edu.cn/"),
     ("联创团队", "联创团队百科", r"http://www.hustunique.com/static/src/pic/intropage/1.jpg", r"http://baike.baidu.com/item/%E8%81%94%E5%88%9B%E5%9B%A2%E9%98%9F/2148447")
