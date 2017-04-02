@@ -39,12 +39,12 @@ def set_msg_type(msg_type):
 @set_msg_type('text')
 def text_resp():
 	content = xmldata.find('Content').text + app.config['HELLO_TEXT']
-	return app.config['TEXT_REPLY'] % (tousername, fromusername, int(time.time()), content)
+	return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
 
 @set_msg_type('event')
 def event_resp():
 	event = xmldata.find('Event').text
 	if event == 'subscribe':
 		content = app.config['WELCOME_TEXT']
-		return app.config['TEXT_REPLY'] % (tousername, fromusername, int(time.time()), content)
+		return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
 	return ''
