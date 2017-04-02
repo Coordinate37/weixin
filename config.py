@@ -79,7 +79,7 @@ MENU_SETTING = """
 """
 # [title, description, picurl, url]
 NEWS_CONTENT = [
-    ["Bingyan", "Bingyan bbs", r"https://baike.baidu.com/pic/%E5%86%B0%E5%B2%A9%E4%BD%9C%E5%9D%8A/4895228/0/d7c9ca3f43d353e07d1e71cf?fr=lemma&ct=single#aid=0&pic=d7c9ca3f43d353e07d1e71cf", r"newbbs.bingyan.net"],
-    ["联创团队", "联创团队百科", r"https://baike.baidu.com/pic/%E8%81%94%E5%88%9B%E5%9B%A2%E9%98%9F/2148447/0/a0ca99d6f591b10c06088b37?fr=lemma&ct=single#aid=0&pic=a0ca99d6f591b10c06088b37", r"http://baike.baidu.com/item/%E8%81%94%E5%88%9B%E5%9B%A2%E9%98%9F/2148447"],
-    ["Dian", "Dian 团队官网", r"http://dian.hust.edu.cn/cn/show/slide/1.jpg", r"http://dian.hust.edu.cn/"]
+    ["Bingyan", "Bingyan bbs", r"http://www.bingyan.net/static/img/team1_1.png", r"newbbs.bingyan.net"],
+    ["Dian", "Dian 团队官网", r"http://dian.hust.edu.cn/cn/show/slide/1.jpg", r"http://dian.hust.edu.cn/"],
+    ["联创团队", "联创团队百科", r"http://www.hustunique.com/static/src/pic/intropage/1.jpg", r"http://baike.baidu.com/item/%E8%81%94%E5%88%9B%E5%9B%A2%E9%98%9F/2148447"]
 ]
