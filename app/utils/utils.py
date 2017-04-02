@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import hashlib
+from flask import make_response
 
 def check_signature(data):
     token = '1997117'

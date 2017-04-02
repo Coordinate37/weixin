@@ -4,35 +4,47 @@
 import time
 import xml.etree.ElementTree as ET
 import sys
+from app import app
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-def recv_msg(data):
-	xmldata = ET.fromstring(data)
-	# Sender ID
-	fromusername = xmldata.find('FromUserName').text
-	# User ID
-	tousername = xmldata.find('ToUserName').text
-	# Message content
-	content = xmldata.find('Content').text
-	xmldict = {'FromUserName': fromusername, 'ToUserName': tousername, 'Content': content}
-	return xmldict
+msg_type_resp = {}
 
-def submit_msg(content_dict={'':''}, type='text'):
-	toname = content_dict['FromUserName']
-	fromname = content_dict['ToUserName']
-	content = content_dict['Content']
-	content = "你好，%s" % (content)
-	reply = """
-    <xml>
-        <ToUserName><![CDATA[%s]]></ToUserName>
-        <FromUserName><![CDATA[%s]]></FromUserName>
-        <CreateTime>%s</CreateTime>
-        <MsgType><![CDATA[text]]></MsgType>
-        <Content><![CDATA[%s]]></Content>
-        <FuncFlag>0</FuncFlag>
-    </xml>
+def wechat_response(data):
+	global xmldata, fromusername, tousername, msgtype
+
+	xmldata = ET.fromstring(data)
+	fromusername = xmldata.find('FromUserName').text
+	tousername = xmldata.find('ToUserName').text
+	msgtype = xmldata.find('MsgType').text
+
+	try:
+		get_resp_func = msg_type_resp[message['type']]
+		response = get_resp_func()
+	except KeyError:
+		response = 'success'
+
+	return response
+
+def set_msg_type(msg_type):
 	"""
-	resp_str = reply % (toname, fromname, int(time.time()), content)
-	return resp_str
+	msg_type=>function decorator
+	"""
+	def decorator(func):
+		msg_type_resp[msg_type] = func
+		return func
+	return decorator
+
+@set_msg_type('text')
+def text_resp():
+	content = xmldata.find('Content').text + app.config['HELLO_TEXT']
+	return app.config['TEXT_REPLY'] % (tousername, fromusername, int(time.time()), content)
+
+@set_msg_type('event')
+def event_resp():
+	event = xmldata.find('Event').text
+	if event == 'subscribe':
+		content = app.config['WELCOME_TEXT']
+		return app.config['TEXT_REPLY'] % (tousername, fromusername, int(time.time()), content)
+	return ''

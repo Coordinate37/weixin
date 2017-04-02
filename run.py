@@ -14,4 +14,4 @@ def config_blueprints(app):
 config_blueprints(app)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(port=8888, debug=True)
