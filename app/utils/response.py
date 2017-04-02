@@ -38,8 +38,13 @@ def set_msg_type(msg_type):
 
 @set_msg_type('text')
 def text_resp():
-    content = xmldata.find('Content').text + app.config['HELLO_TEXT']
-    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
+#    content = xmldata.find('Content').text + app.config['HELLO_TEXT']
+#    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
+    itemXml = []
+    for article in app.config['NEWS_CONTENT']:
+        item = app.config['NEWS_ITEM'] % (article[0], article[1], article[2], article[3])
+        itemXml.append(item)
+    return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))
 
 @set_msg_type('event')
 def event_resp():
@@ -50,4 +55,5 @@ def event_resp():
     elif event == 'voice':
         content = xmldata.find('Recognition').text
         return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
-    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), app.config['TEST_TEXT'])
+    content = app.config['TEST_TEXT']
+    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
