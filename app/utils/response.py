@@ -50,4 +50,4 @@ def event_resp():
     elif event == 'voice':
         content = xmldata.find('Recognition').text
         return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
-    return app.config['TEST_TEXT']
+    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), app.config['TEST_TEXT'])

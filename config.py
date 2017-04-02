@@ -25,6 +25,24 @@ IMAGE_REPLY = """
      <MediaId><![CDATA[%s]]></MediaId>
  </xml>
 """
+NEWS_REPLY = """
+<xml>
+    <ToUserName><![CDATA[%s]]></ToUserName>
+    <FromUserName><![CDATA[%s]]></FromUserName>
+    <CreateTime>%s</CreateTime>
+    <MsgType><![CDATA[news]]></MsgType>
+    <ArticleCount>%s</ArticleCount>
+    <Articles>%s</Articles>
+</xml> 
+"""
+NEWS_ITEM = """
+<item>
+    <Title><![CDATA[%s]]></Title> 
+    <Description><![CDATA[%s]]></Description>
+    <PicUrl><![CDATA[%s]]></PicUrl>
+    <Url><![CDATA[%s]]></Url>
+</item>
+"""
 MENU_REPLY = """
 <xml>
     <ToUserName><![CDATA[%s]]></ToUserName>
@@ -35,8 +53,7 @@ MENU_REPLY = """
     <EventKey><![CDATA[%s]]></EventKey>
 </xml>
 """
-MENU_SETTING = """
-{
+MENU_SETTING = {
     "button": [
         {
             "type": "click",
@@ -49,18 +66,18 @@ MENU_SETTING = """
                 {
                     "type": "view",
                     "name": "搜索",
-                    "url": "http://www.soso.com/"
+                    "url": "http://www.baidu.com/"
                 },
                 {
                     "type": "view",
                     "name": "视频",
                     "url": "http://v.qq.com/"
-                },
-                {
-                    "type": "click",
-                    "name": "赞一下我们",
-                    "key": "V1001_GOOD"
                 }]
         }]
 }
-"""
+# [title, description, picurl, url]
+NEWS_CONTENT = [
+    ["Bingyan", "Bingyan bbs", r"https://baike.baidu.com/pic/%E5%86%B0%E5%B2%A9%E4%BD%9C%E5%9D%8A/4895228/0/d7c9ca3f43d353e07d1e71cf?fr=lemma&ct=single#aid=0&pic=d7c9ca3f43d353e07d1e71cf", r"newbbs.bingyan.net"],
+    ["联创团队", "联创团队百科", r"https://baike.baidu.com/pic/%E8%81%94%E5%88%9B%E5%9B%A2%E9%98%9F/2148447/0/a0ca99d6f591b10c06088b37?fr=lemma&ct=single#aid=0&pic=a0ca99d6f591b10c06088b37", r"http://baike.baidu.com/item/%E8%81%94%E5%88%9B%E5%9B%A2%E9%98%9F/2148447"],
+    ["Dian", "Dian 团队官网", r"http://dian.hust.edu.cn/cn/show/slide/1.jpg", r"http://dian.hust.edu.cn/"]
+]
