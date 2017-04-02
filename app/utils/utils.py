@@ -21,10 +21,17 @@ def check_signature(data):
     else:
         return "Access failed!"
 
-def init_wechat():
+def create_menu():
     access_token = get_token()
     url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=%s" % access_token
     req = urllib2.Request(url, app.config['MENU_SETTING'])
+    response = urllib2.urlopen(req)
+    return response
+
+def del_menu():
+    access_token = get_token()
+    url = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=%s" % access_token
+    req = urllib2.Request(url)
     response = urllib2.urlopen(req)
     return response
 
