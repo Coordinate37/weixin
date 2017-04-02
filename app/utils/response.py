@@ -47,4 +47,7 @@ def event_resp():
 	if event == 'subscribe':
 		content = app.config['WELCOME_TEXT']
 		return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
+	else if event == 'voice':
+		content = xmldata.find('Recognition').text
+		return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
 	return ''
