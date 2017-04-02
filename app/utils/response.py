@@ -56,6 +56,8 @@ def voice_resp():
 
 @set_msg_type('event:CLICK')
 def click_resp():
+    content = app.config['WELCOME_TEXT']
+    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
     eventkey = xmldata.find('EventKey').text
     if eventkey == 'Group':
         return news_resp1()
