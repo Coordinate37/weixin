@@ -48,6 +48,6 @@ def event_resp():
         content = app.config['WELCOME_TEXT']
         return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
     elif event == 'voice':
-        content = xmldata.find('Recognition').text
+        content = app.config['HELLO_TEXT']
         return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
     return ''

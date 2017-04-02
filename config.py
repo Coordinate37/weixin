@@ -14,32 +14,32 @@ TEXT_REPLY = """
 """
 IMAGE_REPLY = """
  <xml>
-	 <ToUserName><![CDATA[%s]]></ToUserName>
-	 <FromUserName><![CDATA[%s]]></FromUserName>
-	 <CreateTime>%s</CreateTime>
-	 <MsgType><![CDATA[image]]></MsgType>
-	 <PicUrl><![CDATA[%s]]></PicUrl>
-	 <MediaId><![CDATA[%s]]></MediaId>
+     <ToUserName><![CDATA[%s]]></ToUserName>
+     <FromUserName><![CDATA[%s]]></FromUserName>
+     <CreateTime>%s</CreateTime>
+     <MsgType><![CDATA[image]]></MsgType>
+     <PicUrl><![CDATA[%s]]></PicUrl>
+     <MediaId><![CDATA[%s]]></MediaId>
  </xml>
 """
 VOICE_REPLY = """
 <xml>
-	<ToUserName><![CDATA[%s]]></ToUserName>
-	<FromUserName><![CDATA[%s]]></FromUserName>
-	<CreateTime>%s</CreateTime>
-	<MsgType><![CDATA[voice]]></MsgType>
-	<MediaId><![CDATA[%s]]></MediaId>
-	<Format><![CDATA[%s]]></Format>
-	<Recognition><![CDATA[腾讯微信团队]]></Recognition>
+    <ToUserName><![CDATA[%s]]></ToUserName>
+    <FromUserName><![CDATA[%s]]></FromUserName>
+    <CreateTime>%s</CreateTime>
+    <MsgType><![CDATA[voice]]></MsgType>
+    <MediaId><![CDATA[%s]]></MediaId>
+    <Format><![CDATA[%s]]></Format>
+    <Recognition><![CDATA[腾讯微信团队]]></Recognition>
 </xml>
 """
 MENU_REPLY = """
 <xml>
-	<ToUserName><![CDATA[%s]]></ToUserName>
-	<FromUserName><![CDATA[%s]]></FromUserName>
-	<CreateTime>%s</CreateTime>
-	<MsgType><![CDATA[%s]]></MsgType>
-	<Event><![CDATA[%s]]></Event>
-	<EventKey><![CDATA[%s]]></EventKey>
+    <ToUserName><![CDATA[%s]]></ToUserName>
+    <FromUserName><![CDATA[%s]]></FromUserName>
+    <CreateTime>%s</CreateTime>
+    <MsgType><![CDATA[%s]]></MsgType>
+    <Event><![CDATA[%s]]></Event>
+    <EventKey><![CDATA[%s]]></EventKey>
 </xml>
 """
