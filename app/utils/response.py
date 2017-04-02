@@ -20,7 +20,7 @@ def wechat_response(data):
 	msgtype = xmldata.find('MsgType').text
 
 	try:
-		get_resp_func = msg_type_resp[message['type']]
+		get_resp_func = msg_type_resp[msgtype]
 		response = get_resp_func()
 	except KeyError:
 		response = 'success'
