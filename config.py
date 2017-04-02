@@ -35,36 +35,32 @@ MENU_REPLY = """
     <EventKey><![CDATA[%s]]></EventKey>
 </xml>
 """
-MENU_SETTING = {
+MENU_SETTING = """
+{
     "button": [
         {
-            "name": "我是学霸",
+            "type": "click",
+            "name": "今日歌曲",
+            "key": "V1001_TODAY_MUSIC"
+        },
+        {
+            "name": "菜单",
             "sub_button": [
                 {
-                    "type": "click",
-                    "name": "期末成绩",
-                    "key": "score",
-                    "sub_button": []
+                    "type": "view",
+                    "name": "搜索",
+                    "url": "http://www.soso.com/"
                 },
                 {
                     "type": "view",
-                    "name": "四六级成绩",
-                    "url": "http://115.159.64.43/CETQuery/",
-                    "sub_button": []
+                    "name": "视频",
+                    "url": "http://v.qq.com/"
                 },
                 {
                     "type": "click",
-                    "name": "一键续借",
-                    "key": "renew_books",
-                    "sub_button": []
-                }
-            ]
-        },
-        {
-            "type": "click",
-            "name": "Jay Chou",
-            "key": "music",
-            "sub_button": []
-        }
-    ]
+                    "name": "赞一下我们",
+                    "key": "V1001_GOOD"
+                }]
+        }]
 }
+"""
