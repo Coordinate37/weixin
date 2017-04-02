@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request, make_response, Blueprint
-from app.utils.utils import check_signature
+from app.utils.check_sign import check_signature
 from app.utils.response import wechat_response
 from . import acc
 
