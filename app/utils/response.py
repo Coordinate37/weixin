@@ -58,8 +58,8 @@ def voice_resp():
 def click_resp():
     eventkey = xmldata.find('EventKey').text
     if eventkey == 'Group':
-        return news_resp1
-    return news_resp2
+        return news_resp1()
+    return news_resp2()
 
 def news_resp1():
     itemXml = []
