@@ -18,6 +18,8 @@ def wechat_response(data):
     fromusername = xmldata.find('FromUserName').text
     tousername = xmldata.find('ToUserName').text
     msgtype = xmldata.find('MsgType').text
+    if msgtype == 'event':
+        msgtype = xmldata.find('Event').text
 
     try:
         get_resp_func = msg_type_resp[msgtype]
@@ -46,14 +48,12 @@ def text_resp():
         itemXml.append(item)
     return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))
 
-@set_msg_type('event')
-def event_resp():
-    event = xmldata.find('Event').text
-    if event == 'subscribe':
-        content = app.config['WELCOME_TEXT']
-        return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
-    elif event == 'voice':
-        content = xmldata.find('Recognition').text
-        return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
-    content = app.config['TEST_TEXT']
+@set_msg_type('subscribe')
+def subscribe_resp():
+    content = app.config['WELCOME_TEXT']
+    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
+
+@set_msg_type('voice')
+def voice_resp():
+    content = xmldata.find('Recognition').text
     return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
