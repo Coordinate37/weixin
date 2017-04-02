@@ -42,7 +42,7 @@ def text_resp():
 #    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
     itemXml = []
     for article in app.config['NEWS_CONTENT']:
-        item = app.config['NEWS_ITEM'] % (article[0], article[1], article[2], article[3])
+        item = app.config['NEWS_ITEM'] % article
         itemXml.append(item)
     return app.config['NEWS_REPLY'] % (fromusername, tousername, int(time.time()), len(app.config['NEWS_CONTENT']), ''.join(itemXml))
 
