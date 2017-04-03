@@ -42,16 +42,15 @@ def set_msg_type(msg_type):
 def text_resp():
    content = xmldata.find('Content').text + app.config['HELLO_TEXT']
    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
-    
+
+@set_msg_type('voice')
+def voice_resp():
+    content = xmldata.find('Recognition').text
+    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)    
 
 @set_msg_type('event:subscribe')
 def subscribe_resp():
     content = app.config['WELCOME_TEXT']
-    return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
-
-@set_msg_type('event:voice')
-def voice_resp():
-    content = xmldata.find('Recognition').text
     return app.config['TEXT_REPLY'] % (fromusername, tousername, int(time.time()), content)
 
 @set_msg_type('event:CLICK')
