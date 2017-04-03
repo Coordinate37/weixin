@@ -61,14 +61,9 @@ MENU_SETTING = """
             "name": "网页",
             "sub_button": [
                 {
-                    "type": "click",
+                    "type": "view",
                     "name": "自定义分享",
-                    "key": "bingyan"
-                },
-                {
-                    "type": "click",
-                    "name": "Teams",
-                    "key": "Group"
+                    "url": "http://whbbingyan.cn/weixin/share.html"
                 }]
         },
         {
