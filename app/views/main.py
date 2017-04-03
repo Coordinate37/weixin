@@ -34,7 +34,7 @@ def get():
     signature = get_signature(request.url)
     params = dict(title="微信分享尝试",
                   link="http://newbbs.bingyan.net/topics",
-                  imgUrl="http://www.bingyan.net/static/img/team1_1.png",
+                  imgUrl="http://whbbingyan.cn/team1_1.png",
                   desc="微信自定义分享测试",
                   appId=app.config['APP_ID']
                   )
