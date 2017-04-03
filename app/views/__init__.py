@@ -3,5 +3,5 @@
 
 from flask import Blueprint
 
-err = Blueprint('err', __name__)
-acc = Blueprint('acc', __name__)
+err = Blueprint('err', __name__, url_prefix="/weixin")
+acc = Blueprint('acc', __name__, url_prefix="/weixin")

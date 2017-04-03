@@ -6,6 +6,7 @@ HELLO_TEXT = '你好'
 TEST_TEXT = 'hhhh'
 APP_ID = 'wx70078936c4e3f0ce'
 APP_SECRET = '74932d08df7577b583972e88446a60a9'
+SHARE_URL = 'http://118.89.42.70/weixin/index'
 TEXT_REPLY = """
 <xml>
     <ToUserName><![CDATA[%s]]></ToUserName>
@@ -57,9 +58,18 @@ MENU_SETTING = """
 {
     "button": [
         {
-            "type": "click",
-            "name": "Network",
-            "key": "V1001_TODAY_MUSIC"
+            "name": "网页",
+            "sub_button": [
+                {
+                    "type": "click",
+                    "name": "自定义分享",
+                    "key": "bingyan"
+                },
+                {
+                    "type": "click",
+                    "name": "Teams",
+                    "key": "Group"
+                }]
         },
         {
             "name": "Click",
