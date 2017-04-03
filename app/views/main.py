@@ -7,7 +7,7 @@ from app.utils.response import wechat_response
 from app import app
 from . import acc
 
-@acc.route('/', methods=['GET','POST'])
+@acc.route('', methods=['GET','POST'])
 def wechat_auth():
     if request.method == 'GET':
         return check_signature(request.args)
