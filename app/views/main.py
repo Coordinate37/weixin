@@ -32,8 +32,8 @@ def jsapi_auth():
 def get():
     print request.url
     signature = get_signature(request.url)
-    params = dict(title="微信分享尝试",
-                  link="http://whbbingyan.cn/weixin/share.html",
+    params = dict(title="TEST JS-SDK",
+                  link="http://www.baidu.com",
                   imgUrl="http://www.bingyan.net/static/img/team1_1.png",
                   desc="微信自定义分享测试",
                   appId=app.config['APP_ID']
