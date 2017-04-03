@@ -68,4 +68,4 @@ def get_signature(url):
 #    s = "jsapi_ticket=" + js_ticket + "&noncestr=" + noncestr + "&timestamp=" + str(timestamp) + "&url=" + url
     s = "jsapi_ticket=%s&noncestr=%s&timestamp=%s&url=%s" % (jsapi_ticket, nonceStr, timestamp, url)
     signature = hashlib.sha1(s).hexdigest()
-    return dict(timestamp=timestamp, nonceStr=nonceStr, signature=signature)
+    return dict(timestamp=timestamp, nonceStr=nonceStr, signature=signature, jsapi_ticket=jsapi_ticket)
