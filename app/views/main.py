@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import request, make_response, Blueprint, render_template
+from flask import request, make_response, Blueprint, jsonify
 from app.utils.utils import check_signature, create_menu, del_menu, Sign
 from app.utils.response import wechat_response
 from app import app
@@ -20,8 +20,8 @@ def wechat_auth():
 
 @acc.route('/jsapi_auth', methods=['GET', 'POST'])
 def jsapi_auth():
-    url = request.url
-    data = request.values.get('a')
+    url = request.values.get('url')
     sign = Sign(url)
     result = sign.sign()
-    return url
+    result['appId'] = app.config['APP_ID']
+    return jsonify(result)
