@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request, make_response, Blueprint, render_template
-from app.utils.utils import check_signature, create_menu, del_menu, sign
+from app.utils.utils import check_signature, create_menu, del_menu, Sign
 from app.utils.response import wechat_response
 from app import app
 from . import acc
@@ -18,17 +18,10 @@ def wechat_auth():
     response.content_type = 'application/xml'
     return response
 
-@acc.route('/index', methods=['GET', 'POST'])
-def index():
-    config = sign.sign()
-    config['debug'] = True
-    config['appId'] = app.config['APP_ID']
-    config['jsApiList'] = [
-        'onMenuShareTimeline',
-        'onMenuShareAppMessage'
-    ]
-    return render_template('test.html', test='haha', config=config)
-
-@acc.route('/test', methods=['GET', 'POST'])
-def test2():
-    return render_template('test2.html', test='haha')
+@acc.route('/jsapi_auth', methods=['GET', 'POST'])
+def jsapi_auth():
+    url = request.url
+    data = request.values.get('a')
+    sign = Sign(url)
+    result = sign.sign()
+    return url
