@@ -9,7 +9,7 @@
 <script type="text/javascript">
     function jssdk() {
         $.ajax({
-            url : "http://118.89.42.70/weixin/jsapi_auth",
+            url : "http://192.168.0.105:5000/weixin/jsapi_auth",
             type : 'post',
             dataType : 'json',
             contentType : "application/x-www-form-urlencoded; charset=utf-8",
@@ -17,6 +17,7 @@
                 'url' : location.href.split('#')[0]
             },
             success : function(data) {
+            	alert(data.data.nonceStr);
                 wx.config({
                     debug : true,
                     appId : data.data.appId,
