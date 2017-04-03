@@ -3,69 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>微信分享尝试</title>
-  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script> 
-  window.onload = function() {
-    wx.config({
-      debug: true,
-      appId: {{appId}},
-      timestamp: {{timestamp}},
-      nonceStr: {{nonceStr}},
-      signature: {{signature}},
-      jsApiList: [
-        // 所有要调用的 API 都要加到这个列表中
-        'onMenuShareTimeline',
-        'onMenuShareAppMessage',
-        'onMenuShareQQ'
-      ]
-    });
-    wx.ready(function () {
-      // 在这里调用 API
-      wx.onMenuShareTimeline({
-        title:{{title}},
-        link:{{link}},
-        imgUrl:{{imgUrl}},
-        success: function(){
-            
-        },
-        cancel:function(){
-            
-        }
-      });
-      
-      wx.onMenuShareAppMesssage({
-        title:{{title}},
-        link:{{link}},
-        imgUrl:{{imgUrl}},
-        type:'link',
-        success: function(){
-   
-        },
-        cancel:function(){
-            
-        }
-      });
-      
-      wx.onMenuShareQQ({
-        title:{{title}},
-        desc:{{desc}}
-        link:{{link}},
-        imgUrl:{{imgUrl}},
-        success: function(){
-            
-        },
-        cancel:function(){
-            
-        }
-      })
-    });
-    wx.error(function (res) {
-      alert(res.errMsg);  //打印错误消息。及把 debug:false,设置为debug:ture就可以直接在网页上看到弹出的错误提示
-    });
-  }
-</script>
 </head>
 <body>
+  <head>
    你好
+  </head>
 </body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+  wx.config({
+    debug: true,
+    appId: {{appId}},
+    timestamp: {{timestamp}},
+    nonceStr: {{noncestr}},
+    signature: {{signature}},
+    jsApiList: [
+      // 所有要调用的 API 都要加到这个列表中
+      'onMenuShareTimeline',
+      'onMenuShareAppMessage',
+      'onMenuShareQQ'
+    ]
+  });
+  wx.ready(function () {
+    // 在这里调用 API
+    wx.onMenuShareTimeline({
+      title:{{title}},
+      link:{{link}},
+      imgUrl:{{imgUrl}},
+      success: function(){
+          
+      },
+      cancel:function(){
+          
+      }
+    });
+    
+    wx.onMenuShareAppMesssage({
+      title:{{title}},
+      link:{{link}},
+      imgUrl:{{imgUrl}},
+      type:'link',
+      success: function(){
+          
+      },
+      cancel:function(){
+          
+      }
+    });
+    
+    wx.onMenuShareQQ({
+      title:{{title}},
+      desc:{{desc}}
+      link:{{link}},
+      imgUrl:{{imgUrl}},
+      success: function(){
+          
+      },
+      cancel:function(){
+          
+      }
+    })
+  });
+  wx.error(function (res) {
+  alert(res.errMsg);  //打印错误消息。及把 debug:false,设置为debug:ture就可以直接在网页上看到弹出的错误提示
+  });
+</script>
 </html>

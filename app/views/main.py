@@ -21,16 +21,13 @@ def wechat_auth():
 @acc.route('/jsapi_auth', methods=['GET', 'POST'])
 def jsapi_auth():
     #url = request.values.get('url')
-    url = request.values.get("name")
-    print url
-    sign = Sign(url)
-    result = sign.sign()
-    result['appId'] = app.config['APP_ID']
+    url = request.url
+    result = get_signature(url)
+    result['url'] = url
     return jsonify(result)
 
 @acc.route('/share.html', methods=['GET'])
 def get():
-    print request.url
     signature = get_signature(request.url)
     params = dict(title="TEST JS-SDK",
                   link="http://www.baidu.com",
